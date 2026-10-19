@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Советская сувенир-головоломка Тактика (1988). Правила, стратегия и разбор мега-хода на 16 фишек.">
+    <meta name="keywords" content="Тактика, солитёр, головоломка, СССР, логика, 1988, пег солитёр">
+    <meta name="robots" content="index, follow">
+    <title>Тактика — Советская головоломка</title>
+    <style>
+        /* ===== ВАШИ СТИЛИ (адаптированные) ===== */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.7;
+            color: #1a1a1a;
+            background-color: #ffffff;
+        }
+        h1 {
+            font-size: 2rem;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 0.3rem;
+        }
+        h2 {
+            font-size: 1.4rem;
+            margin-top: 2rem;
+            border-left: 4px solid #2c3e50;
+            padding-left: 0.8rem;
+        }
+        h3 {
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            color: #2c3e50;
+        }
+        .highlight-box {
+            background: #f8f9fa;
+            border-left: 4px solid #2c3e50;
+            padding: 1rem 1.5rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        .highlight-box.success {
+            border-left-color: #2e7d32;
+            background: #f0f8f0;
+        }
+        .highlight-box.warning {
+            border-left-color: #cc5500;
+            background: #fff8f0;
+        }
+        .two-columns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+        .column {
+            flex: 1;
+            min-width: 280px;
+        }
+        .center-image {
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+        .center-image img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border: 1px solid #eee;
+        }
+        .center-image .caption {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: #555;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 0.5rem 0.8rem;
+            text-align: left;
+        }
+        th {
+            background: #2c3e50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        .btn {
+            display: inline-block;
+            background: #2c3e50;
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 1rem;
+            cursor: pointer;
+            border: none;
+        }
+        .btn:hover {
+            background: #1a2a3a;
+        }
+
+        /* ===== СТИЛИ ДЛЯ ГАЛЕРЕИ ===== */
+        .gallery-container {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .gallery-container img {
+            max-height: 500px;
+            width: auto;
+            max-width: 100%;
+            border-radius: 4px;
+            display: none;
+        }
+        .gallery-container img.active {
+            display: inline-block;
+        }
+        .gallery-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+            align-items: center;
+        }
+        .gallery-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2c3e50;
+            min-width: 150px;
+        }
+        .btn-nav {
+            background: #2c3e50;
+            color: white;
+            border: none;
+            padding: 0.4rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .btn-nav:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Меню вставится через menu.js -->
+
+    <h1>🧩 Тактика — Сувенир-головоломка</h1>
+
+    <p>
+        Перед вами классическая советская логическая игра для одного игрока (солитёр), 
+        выпущенная Ленинградским производственным объединением в 1988 году. 
+        Это не просто развлечение, а настоящий тренажер для мозга, развивающий тактическое мышление и сообразительность.
+    </p>
+
+    <div class="highlight-box success">
+        <strong>📊 Итог игры:</strong> Цель — убрать с поля все фишки, оставив ровно одну. 
+        Идеальное решение — когда последняя фишка оказывается в центральном отверстии.
+    </div>
+
+    <h2>1. Знакомство с игрой</h2>
+    
+    <div class="two-columns">
+        <div class="column">
+            <div class="center-image">
+                <img src="images/box_front.jpg" alt="Коробка спереди">
+                <div class="caption">Лицевая сторона коробки с видом на Ленинград</div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="center-image">
+                <img src="images/box_open.jpg" alt="Открытая коробка">
+                <div class="caption">Поле и фишки в футляре</div>
+            </div>
+        </div>
+    </div>
+
+    <h2>2. Правила игры</h2>
+    
+    <p>В комплект входят пластиковое поле с 33 лунками и 32 фишки. Одна лунка (центральная) всегда остается пустой.</p>
+
+    <div class="two-columns">
+        <div class="column">
+            <h3>Как ходить:</h3>
+            <ul>
+                <li>Фишка может перепрыгнуть через соседнюю фишку только по горизонтали или вертикали.</li>
+                <li>Приземляться можно только в пустую лунку.</li>
+                <li>Фишка, через которую перепрыгнули, снимается с поля.</li>
+                <li>Просто передвигать фишки без прыжков запрещено.</li>
+            </ul>
+        </div>
+        <div class="column">
+            <h3>Важный нюанс:</h3>
+            <div class="highlight-box warning">
+                <p>В оригинальной инструкции не указан запрет на повороты во время серии прыжков. Это означает, что при желании вы можете выполнять каскадные ходы, поворачивая на 90 градусов и снимая множество фишек за один ход.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="center-image">
+        <img src="images/rules.jpg" alt="Инструкция">
+        <div class="caption">Оригинальная инструкция (Ленинград, 1988)</div>
+    </div>
+
+    <h2>3. Стартовая позиция</h2>
+    <p>Классическая расстановка для этой головоломки — «крест» с пустой центральной лункой.</p>
+    
+    <div class="center-image">
+        <img src="images/start_position.jpg" alt="Стартовая позиция">
+        <div class="caption">32 фишки, 1 пустое место в центре</div>
+    </div>
+
+    <h2>4. Мега-ход на 16 фишек (Эксперимент)</h2>
+    
+    <p>
+        Благодаря тому, что правила не запрещают менять направление во время прыжков, 
+        можно создавать невероятные каскадные комбинации. В этом эксперименте одна фишка 
+        (помечена белым квадратом) сняла <strong>16 фишек за один непрерывный ход</strong>, 
+        двигаясь по периметру и заходя в центр.
+    </p>
+
+    <div class="gallery-container">
+        <!-- Сюда будут подставляться картинки через JS -->
+        <img src="images/start_position.jpg" alt="Ход 0" class="gallery-img active">
+        <img src="images/step_01.jpg" alt="Ход 1" class="gallery-img">
+        <img src="images/step_02.jpg" alt="Ход 2" class="gallery-img">
+        <img src="images/step_03.jpg" alt="Ход 3" class="gallery-img">
+        <img src="images/step_04.jpg" alt="Ход 4" class="gallery-img">
+        <img src="images/step_05.jpg" alt="Ход 5" class="gallery-img">
+        <img src="images/step_06.jpg" alt="Ход 6" class="gallery-img">
+        <img src="images/step_07.jpg" alt="Ход 7" class="gallery-img">
+        <img src="images/step_08.jpg" alt="Ход 8" class="gallery-img">
+        <img src="images/step_09.jpg" alt="Ход 9" class="gallery-img">
+        <img src="images/step_10.jpg" alt="Ход 10" class="gallery-img">
+        <img src="images/step_11.jpg" alt="Ход 11" class="gallery-img">
+        <img src="images/step_12.jpg" alt="Ход 12" class="gallery-img">
+        <img src="images/step_13.jpg" alt="Ход 13" class="gallery-img">
+        <img src="images/step_14.jpg" alt="Ход 14" class="gallery-img">
+        <img src="images/step_15.jpg" alt="Ход 15" class="gallery-img">
+        <img src="images/step_16.jpg" alt="Ход 16" class="gallery-img">
+        <img src="images/final_position.jpg" alt="Финал" class="gallery-img">
+    </div>
+
+    <div class="gallery-controls">
+        <button class="btn-nav" id="prevBtn" onclick="changeSlide(-1)">← Назад</button>
+        <div class="gallery-text" id="slideCounter">Кадр 1 из 18</div>
+        <button class="btn-nav" id="nextBtn" onclick="changeSlide(1)">Вперед →</button>
+    </div>
+
+    <div class="highlight-box">
+        <strong>Вывод:</strong> Этот ход наглядно доказывает, что игра не так проста, как кажется. 
+        Наличие каскадных прыжков с поворотами создает астрономическое количество комбинаций, 
+        но, как видно на последнем фото, <strong>быстрый ход не гарантирует, что последняя фишка останется в центре</strong>. 
+        Это требует глубочайшего просчета.
+    </div>
+
+    <h2>5. О проекте</h2>
+    <p>
+        Этот сайт создан для сохранения истории советских настольных игр. 
+        Игра «Тактика» — яркий пример того, как простая механика с колышками 
+        превращается в сложнейшую логическую задачу, опередившую свое время.
+    </p>
+
+    <p style="text-align: center; margin-top: 2rem;">
+        <a href="https://github.com/ВАШ_НИК/tactica-solitare" class="btn" target="_blank">📂 Исходный код на GitHub</a>
+    </p>
+
+    <!-- Подключаем скрипт -->
+    <script src="menu.js"></script>
+    <script>
+        // ===== ЛОГИКА ГАЛЕРЕИ =====
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.gallery-img');
+        const counter = document.getElementById('slideCounter');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        function showSlide(index) {
+            slides.forEach(s => s.classList.remove('active'));
+            
+            if (index >= slides.length) currentSlide = 0;
+            if (index < 0) currentSlide = slides.length - 1;
+            else currentSlide = index;
+
+            slides[currentSlide].classList.add('active');
+            counter.textContent = `Кадр ${currentSlide + 1} из ${slides.length}`;
+
+            prevBtn.disabled = (currentSlide === 0);
+            nextBtn.disabled = (currentSlide === slides.length - 1);
+        }
+
+        function changeSlide(direction) {
+            showSlide(currentSlide + direction);
+        }
+
+        // Инициализация при загрузке
+        window.onload = () => showSlide(0);
+    </script>
+
+</body>
+</html>
