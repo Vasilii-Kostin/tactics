@@ -176,16 +176,36 @@
     <div class="two-columns">
         <div class="column">
             <div class="center-image">
-                <img src="images/box_front.jpg" alt="Коробка спереди">
+                <img src="images/box_front.jpg" alt="Лицевая сторона коробки">
                 <div class="caption">Лицевая сторона коробки с видом на Ленинград</div>
             </div>
         </div>
         <div class="column">
             <div class="center-image">
-                <img src="images/box_open.jpg" alt="Открытая коробка">
-                <div class="caption">Поле и фишки в футляре</div>
+                <img src="images/box_side_1.jpg" alt="Боковая сторона коробки">
+                <div class="caption">Боковая сторона с указанием производителя</div>
             </div>
         </div>
+    </div>
+
+    <div class="two-columns">
+        <div class="column">
+            <div class="center-image">
+                <img src="images/box_side_2.jpg" alt="Торец коробки">
+                <div class="caption">Торец коробки с артикулом и годом</div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="center-image">
+                <img src="images/notebook.jpg" alt="Обложка блокнота">
+                <div class="caption">Блокнот-футляр с гербом</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="center-image">
+        <img src="images/box_open.jpg" alt="Открытая коробка">
+        <div class="caption">Поле и фишки в футляре</div>
     </div>
 
     <h2>2. Правила игры</h2>
@@ -219,11 +239,11 @@
     <p>Классическая расстановка для этой головоломки — «крест» с пустой центральной лункой.</p>
     
     <div class="center-image">
-        <img src="images/start_position.jpg" alt="Стартовая позиция">
+        <img src="images/start_position.jpg" alt="Классическая стартовая позиция">
         <div class="caption">32 фишки, 1 пустое место в центре</div>
     </div>
 
-    <h2>4. Мега-ход на 16 фишек (Эксперимент)</h2>
+    <h2 id="gallery">4. Мега-ход на 16 фишек (Эксперимент)</h2>
     
     <p>
         Благодаря тому, что правила не запрещают менять направление во время прыжков, 
@@ -231,11 +251,11 @@
         (помечена белым квадратом) сняла <strong>16 фишек за один непрерывный ход</strong>, 
         двигаясь по периметру и заходя в центр.
     </p>
+    <p><em>Для запуска эксперимента угловые фишки были убраны, чтобы освободить путь для разворота (см. первый кадр галереи).</em></p>
 
     <div class="gallery-container">
-        <!-- Сюда будут подставляться картинки через JS -->
-        <img src="images/start_position.jpg" alt="Ход 0" class="gallery-img active">
-        <img src="images/step_01.jpg" alt="Ход 1" class="gallery-img">
+        <!-- Галерея. Внимание: step_17.jpg используется как финал -->
+        <img src="images/step_01.jpg" alt="Старт эксперимента" class="gallery-img active">
         <img src="images/step_02.jpg" alt="Ход 2" class="gallery-img">
         <img src="images/step_03.jpg" alt="Ход 3" class="gallery-img">
         <img src="images/step_04.jpg" alt="Ход 4" class="gallery-img">
@@ -251,12 +271,12 @@
         <img src="images/step_14.jpg" alt="Ход 14" class="gallery-img">
         <img src="images/step_15.jpg" alt="Ход 15" class="gallery-img">
         <img src="images/step_16.jpg" alt="Ход 16" class="gallery-img">
-        <img src="images/final_position.jpg" alt="Финал" class="gallery-img">
+        <img src="images/step_17.jpg" alt="Финал" class="gallery-img">
     </div>
 
     <div class="gallery-controls">
         <button class="btn-nav" id="prevBtn" onclick="changeSlide(-1)">← Назад</button>
-        <div class="gallery-text" id="slideCounter">Кадр 1 из 18</div>
+        <div class="gallery-text" id="slideCounter">Кадр 1 из 17</div>
         <button class="btn-nav" id="nextBtn" onclick="changeSlide(1)">Вперед →</button>
     </div>
 
@@ -275,7 +295,7 @@
     </p>
 
     <p style="text-align: center; margin-top: 2rem;">
-        <a href="https://vasilii-kostin.github.io/tactics" class="btn" target="_blank">📂 Исходный код на GitHub</a>
+        <a href="https://github.com/Vasilii-Kostin/tactics" class="btn" target="_blank">📂 Исходный код на GitHub</a>
     </p>
 
     <!-- Подключаем скрипт -->
