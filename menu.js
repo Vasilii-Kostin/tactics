@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <a href="index.html" style="color: white; text-decoration: none; font-weight: bold;">🧩 Тактика</a>
         <a href="#rules" style="color: #ecf0f1; text-decoration: none;">Правила</a>
         <a href="#gallery" style="color: #ecf0f1; text-decoration: none;">Мега-ход</a>
-        <a href="https://github.com/ВАШ_НИК/tactica-solitare" target="_blank" style="color: #ecf0f1; text-decoration: none;">GitHub</a>
+        <a href="https://vasilii-kostin.github.io/tactics" target="_blank" style="color: #ecf0f1; text-decoration: none;">GitHub</a>
     `;
 
     // Вставляем меню в самое начало body
