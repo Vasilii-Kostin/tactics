@@ -15,9 +15,10 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
     nav.innerHTML = `
         <a href="index.html" style="color: white; text-decoration: none; font-weight: bold;">🧩 Тактика</a>
-        <a href="#rules" style="color: #ecf0f1; text-decoration: none;">Правила</a>
-        <a href="#gallery" style="color: #ecf0f1; text-decoration: none;">Мега-ход</a>
-        <a href="https://vasilii-kostin.github.io/tactics" target="_blank" style="color: #ecf0f1; text-decoration: none;">GitHub</a>
+        <a href="index.html#rules" style="color: #ecf0f1; text-decoration: none;">Правила / Rules</a>
+        <a href="index.html#gallery" style="color: #ecf0f1; text-decoration: none;">Мега-ход / Mega-move</a>
+        <a href="contacts.html" style="color: #ecf0f1; text-decoration: none;">Контакты / Contacts</a>
+        <a href="https://github.com/Vasilii-Kostin/tactics" target="_blank" style="color: #ecf0f1; text-decoration: none;">GitHub</a>
     `;
 
     // Вставляем меню в самое начало body
@@ -34,8 +35,8 @@ document.addEventListener('DOMContentLoaded', function() {
         text-align: center;
     `;
     footer.innerHTML = `
-        <p>Проект сохранения советского наследия. Головоломка «Тактика» (Ленинград, 1988).</p>
-        <p>© 2026 Василий Костин</p>
+        <p>Проект сохранения советского наследия. Головоломка «Тактика» (Ленинград, 1988). / Soviet heritage preservation project. Puzzle "Tactics" (Leningrad, 1988).</p>
+        <p>© 2026 Василий Костин / Vasilii Kostin</p>
     `;
 
     document.body.appendChild(footer);

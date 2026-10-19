@@ -8,7 +8,7 @@
     <meta name="robots" content="index, follow">
     <title>Тактика — Советская головоломка</title>
     <style>
-        /* ===== ВАШИ СТИЛИ (адаптированные) ===== */
+        /* ===== СТИЛИ ===== */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             max-width: 1000px;
@@ -17,6 +17,7 @@
             line-height: 1.7;
             color: #1a1a1a;
             background-color: #ffffff;
+            transition: opacity 0.3s ease;
         }
         h1 {
             font-size: 2rem;
@@ -33,6 +34,21 @@
             font-size: 1.2rem;
             margin-top: 1.5rem;
             color: #2c3e50;
+        }
+        .lang-switch {
+            margin: 1rem 0;
+            font-size: 1rem;
+            color: #555;
+        }
+        .lang-switch a {
+            color: #0066cc;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 0 5px;
+        }
+        .lang-switch a:hover {
+            text-decoration: underline;
         }
         .highlight-box {
             background: #f8f9fa;
@@ -73,23 +89,6 @@
             margin-top: 0.5rem;
             font-size: 0.9rem;
             color: #555;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1rem 0;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 0.5rem 0.8rem;
-            text-align: left;
-        }
-        th {
-            background: #2c3e50;
-            color: white;
-        }
-        tr:nth-child(even) {
-            background: #f8f9fa;
         }
         .btn {
             display: inline-block;
@@ -156,34 +155,36 @@
 </head>
 <body>
 
-    <!-- Меню вставится через menu.js -->
+    <div class="lang-switch">
+        <span>🇷🇺 Русский</span> | <a onclick="setLang('en')">🇬🇧 English</a>
+    </div>
 
-    <h1>🧩 Тактика — Сувенир-головоломка</h1>
+    <h1 id="t_title">🧩 Тактика — Сувенир-головоломка</h1>
 
-    <p>
+    <p id="t_intro">
         Перед вами классическая советская логическая игра для одного игрока (солитёр), 
         выпущенная Ленинградским производственным объединением в 1988 году. 
         Это не просто развлечение, а настоящий тренажер для мозга, развивающий тактическое мышление и сообразительность.
     </p>
 
     <div class="highlight-box success">
-        <strong>📊 Итог игры:</strong> Цель — убрать с поля все фишки, оставив ровно одну. 
-        Идеальное решение — когда последняя фишка оказывается в центральном отверстии.
+        <strong id="t_goal_strong">📊 Итог игры:</strong> <span id="t_goal">Цель — убрать с поля все фишки, оставив ровно одну. 
+        Идеальное решение — когда последняя фишка оказывается в центральном отверстии.</span>
     </div>
 
-    <h2>1. Знакомство с игрой</h2>
+    <h2>1. <span id="t_sec1">Знакомство с игрой</span></h2>
     
     <div class="two-columns">
         <div class="column">
             <div class="center-image">
                 <img src="images/box_front.jpg" alt="Лицевая сторона коробки">
-                <div class="caption">Лицевая сторона коробки с видом на Ленинград</div>
+                <div class="caption" id="t_cap1">Лицевая сторона коробки с видом на Ленинград</div>
             </div>
         </div>
         <div class="column">
             <div class="center-image">
                 <img src="images/box_side_1.jpg" alt="Боковая сторона коробки">
-                <div class="caption">Боковая сторона с указанием производителя</div>
+                <div class="caption" id="t_cap2">Боковая сторона с указанием производителя</div>
             </div>
         </div>
     </div>
@@ -192,30 +193,30 @@
         <div class="column">
             <div class="center-image">
                 <img src="images/box_side_2.jpg" alt="Торец коробки">
-                <div class="caption">Торец коробки с артикулом и годом</div>
+                <div class="caption" id="t_cap3">Торец коробки с артикулом и годом</div>
             </div>
         </div>
         <div class="column">
             <div class="center-image">
                 <img src="images/notebook.jpg" alt="Обложка блокнота">
-                <div class="caption">Блокнот-футляр с гербом</div>
+                <div class="caption" id="t_cap4">Блокнот-футляр с гербом</div>
             </div>
         </div>
     </div>
 
     <div class="center-image">
         <img src="images/box_open.jpg" alt="Открытая коробка">
-        <div class="caption">Поле и фишки в футляре</div>
+        <div class="caption" id="t_cap5">Поле и фишки в футляре</div>
     </div>
 
-    <h2>2. Правила игры</h2>
+    <h2 id="rules">2. <span id="t_sec2">Правила игры</span></h2>
     
-    <p>В комплект входят пластиковое поле с 33 лунками и 32 фишки. Одна лунка (центральная) всегда остается пустой.</p>
+    <p id="t_rules_intro">В комплект входят пластиковое поле с 33 лунками и 32 фишки. Одна лунка (центральная) всегда остается пустой.</p>
 
     <div class="two-columns">
         <div class="column">
-            <h3>Как ходить:</h3>
-            <ul>
+            <h3 id="t_how">Как ходить:</h3>
+            <ul id="t_how_list">
                 <li>Фишка может перепрыгнуть через соседнюю фишку только по горизонтали или вертикали.</li>
                 <li>Приземляться можно только в пустую лунку.</li>
                 <li>Фишка, через которую перепрыгнули, снимается с поля.</li>
@@ -223,38 +224,37 @@
             </ul>
         </div>
         <div class="column">
-            <h3>Важный нюанс:</h3>
+            <h3 id="t_nuance">Важный нюанс:</h3>
             <div class="highlight-box warning">
-                <p>В оригинальной инструкции не указан запрет на повороты во время серии прыжков. Это означает, что при желании вы можете выполнять каскадные ходы, поворачивая на 90 градусов и снимая множество фишек за один ход.</p>
+                <p id="t_nuance_text">В оригинальной инструкции не указан запрет на повороты во время серии прыжков. Это означает, что при желании вы можете выполнять каскадные ходы, поворачивая на 90 градусов и снимая множество фишек за один ход.</p>
             </div>
         </div>
     </div>
 
     <div class="center-image">
         <img src="images/rules.jpg" alt="Инструкция">
-        <div class="caption">Оригинальная инструкция (Ленинград, 1988)</div>
+        <div class="caption" id="t_cap6">Оригинальная инструкция (Ленинград, 1988)</div>
     </div>
 
-    <h2>3. Стартовая позиция</h2>
-    <p>Классическая расстановка для этой головоломки — «крест» с пустой центральной лункой.</p>
+    <h2>3. <span id="t_sec3">Стартовая позиция</span></h2>
+    <p id="t_start_text">Классическая расстановка для этой головоломки — «крест» с пустой центральной лункой.</p>
     
     <div class="center-image">
         <img src="images/start_position.jpg" alt="Классическая стартовая позиция">
-        <div class="caption">32 фишки, 1 пустое место в центре</div>
+        <div class="caption" id="t_cap7">32 фишки, 1 пустое место в центре</div>
     </div>
 
-    <h2 id="gallery">4. Мега-ход на 16 фишек (Эксперимент)</h2>
+    <h2 id="gallery">4. <span id="t_sec4">Мега-ход на 16 фишек (Эксперимент)</span></h2>
     
-    <p>
+    <p id="t_mega_text1">
         Благодаря тому, что правила не запрещают менять направление во время прыжков, 
         можно создавать невероятные каскадные комбинации. В этом эксперименте одна фишка 
         (помечена белым квадратом) сняла <strong>16 фишек за один непрерывный ход</strong>, 
         двигаясь по периметру и заходя в центр.
     </p>
-    <p><em>Для запуска эксперимента угловые фишки были убраны, чтобы освободить путь для разворота (см. первый кадр галереи).</em></p>
+    <p id="t_mega_text2"><em>Для запуска эксперимента угловые фишки были убраны, чтобы освободить путь для разворота (см. первый кадр галереи).</em></p>
 
     <div class="gallery-container">
-        <!-- Галерея. Внимание: step_17.jpg используется как финал -->
         <img src="images/step_01.jpg" alt="Старт эксперимента" class="gallery-img active">
         <img src="images/step_02.jpg" alt="Ход 2" class="gallery-img">
         <img src="images/step_03.jpg" alt="Ход 3" class="gallery-img">
@@ -275,30 +275,29 @@
     </div>
 
     <div class="gallery-controls">
-        <button class="btn-nav" id="prevBtn" onclick="changeSlide(-1)">← Назад</button>
-        <div class="gallery-text" id="slideCounter">Кадр 1 из 17</div>
-        <button class="btn-nav" id="nextBtn" onclick="changeSlide(1)">Вперед →</button>
+        <button class="btn-nav" id="prevBtn" onclick="changeSlide(-1)">← <span id="t_prev">Назад</span></button>
+        <div class="gallery-text" id="slideCounter">1 / 17</div>
+        <button class="btn-nav" id="nextBtn" onclick="changeSlide(1)"><span id="t_next">Вперед</span> →</button>
     </div>
 
     <div class="highlight-box">
-        <strong>Вывод:</strong> Этот ход наглядно доказывает, что игра не так проста, как кажется. 
+        <strong id="t_concl_strong">Вывод:</strong> <span id="t_concl">Этот ход наглядно доказывает, что игра не так проста, как кажется. 
         Наличие каскадных прыжков с поворотами создает астрономическое количество комбинаций, 
         но, как видно на последнем фото, <strong>быстрый ход не гарантирует, что последняя фишка останется в центре</strong>. 
-        Это требует глубочайшего просчета.
+        Это требует глубочайшего просчета.</span>
     </div>
 
-    <h2>5. О проекте</h2>
-    <p>
+    <h2>5. <span id="t_sec5">О проекте</span></h2>
+    <p id="t_about">
         Этот сайт создан для сохранения истории советских настольных игр. 
         Игра «Тактика» — яркий пример того, как простая механика с колышками 
         превращается в сложнейшую логическую задачу, опередившую свое время.
     </p>
 
     <p style="text-align: center; margin-top: 2rem;">
-        <a href="https://github.com/Vasilii-Kostin/tactics" class="btn" target="_blank">📂 Исходный код на GitHub</a>
+        <a href="https://github.com/Vasilii-Kostin/tactics" class="btn" target="_blank">📂 <span id="t_btn_gh">Исходный код на GitHub</span></a>
     </p>
 
-    <!-- Подключаем скрипт -->
     <script src="menu.js"></script>
     <script>
         // ===== ЛОГИКА ГАЛЕРЕИ =====
@@ -310,14 +309,11 @@
 
         function showSlide(index) {
             slides.forEach(s => s.classList.remove('active'));
-            
             if (index >= slides.length) currentSlide = 0;
             if (index < 0) currentSlide = slides.length - 1;
             else currentSlide = index;
-
             slides[currentSlide].classList.add('active');
-            counter.textContent = `Кадр ${currentSlide + 1} из ${slides.length}`;
-
+            counter.textContent = `${currentSlide + 1} / ${slides.length}`;
             prevBtn.disabled = (currentSlide === 0);
             nextBtn.disabled = (currentSlide === slides.length - 1);
         }
@@ -326,8 +322,96 @@
             showSlide(currentSlide + direction);
         }
 
-        // Инициализация при загрузке
         window.onload = () => showSlide(0);
+
+        // ===== ЛОГИКА ПЕРЕВОДА =====
+        const translations = {
+            ru: {
+                t_title: "🧩 Тактика — Сувенир-головоломка",
+                t_intro: "Перед вами классическая советская логическая игра для одного игрока (солитёр), выпущенная Ленинградским производственным объединением в 1988 году. Это не просто развлечение, а настоящий тренажер для мозга, развивающий тактическое мышление и сообразительность.",
+                t_goal_strong: "📊 Итог игры:",
+                t_goal: "Цель — убрать с поля все фишки, оставив ровно одну. Идеальное решение — когда последняя фишка оказывается в центральном отверстии.",
+                t_sec1: "Знакомство с игрой",
+                t_cap1: "Лицевая сторона коробки с видом на Ленинград",
+                t_cap2: "Боковая сторона с указанием производителя",
+                t_cap3: "Торец коробки с артикулом и годом",
+                t_cap4: "Блокнот-футляр с гербом",
+                t_cap5: "Поле и фишки в футляре",
+                t_sec2: "Правила игры",
+                t_rules_intro: "В комплект входят пластиковое поле с 33 лунками и 32 фишки. Одна лунка (центральная) всегда остается пустой.",
+                t_how: "Как ходить:",
+                t_how_list: "<li>Фишка может перепрыгнуть через соседнюю фишку только по горизонтали или вертикали.</li><li>Приземляться можно только в пустую лунку.</li><li>Фишка, через которую перепрыгнули, снимается с поля.</li><li>Просто передвигать фишки без прыжков запрещено.</li>",
+                t_nuance: "Важный нюанс:",
+                t_nuance_text: "В оригинальной инструкции не указан запрет на повороты во время серии прыжков. Это означает, что при желании вы можете выполнять каскадные ходы, поворачивая на 90 градусов и снимая множество фишек за один ход.",
+                t_cap6: "Оригинальная инструкция (Ленинград, 1988)",
+                t_sec3: "Стартовая позиция",
+                t_start_text: "Классическая расстановка для этой головоломки — «крест» с пустой центральной лункой.",
+                t_cap7: "32 фишки, 1 пустое место в центре",
+                t_sec4: "Мега-ход на 16 фишек (Эксперимент)",
+                t_mega_text1: "Благодаря тому, что правила не запрещают менять направление во время прыжков, можно создавать невероятные каскадные комбинации. В этом эксперименте одна фишка (помечена белым квадратом) сняла <strong>16 фишек за один непрерывный ход</strong>, двигаясь по периметру и заходя в центр.",
+                t_mega_text2: "Для запуска эксперимента угловые фишки были убраны, чтобы освободить путь для разворота (см. первый кадр галереи).",
+                t_prev: "Назад",
+                t_next: "Вперед",
+                t_concl_strong: "Вывод:",
+                t_concl: "Этот ход наглядно доказывает, что игра не так проста, как кажется. Наличие каскадных прыжков с поворотами создает астрономическое количество комбинаций, но, как видно на последнем фото, <strong>быстрый ход не гарантирует, что последняя фишка останется в центре</strong>. Это требует глубочайшего просчета.",
+                t_sec5: "О проекте",
+                t_about: "Этот сайт создан для сохранения истории советских настольных игр. Игра «Тактика» — яркий пример того, как простая механика с колышками превращается в сложнейшую логическую задачу, опередившую свое время.",
+                t_btn_gh: "Исходный код на GitHub"
+            },
+            en: {
+                t_title: "🧩 Tactics — Souvenir Puzzle",
+                t_intro: "Here is a classic Soviet single-player logic game (solitaire), produced by the Leningrad Production Association in 1988. This is not just entertainment, but a real brain trainer that develops tactical thinking and ingenuity.",
+                t_goal_strong: "📊 Game Goal:",
+                t_goal: "The goal is to remove all pegs from the board, leaving exactly one. The ideal solution is when the last peg ends up in the central hole.",
+                t_sec1: "Getting Acquainted with the Game",
+                t_cap1: "Front side of the box with a view of Leningrad",
+                t_cap2: "Side with manufacturer information",
+                t_cap3: "End of the box with article number and year",
+                t_cap4: "Notebook case with coat of arms",
+                t_cap5: "Board and pegs in the case",
+                t_sec2: "Rules of the Game",
+                t_rules_intro: "The set includes a plastic board with 33 holes and 32 pegs. One hole (the central one) always remains empty.",
+                t_how: "How to move:",
+                t_how_list: "<li>A peg can jump over an adjacent peg only horizontally or vertically.</li><li>You can only land in an empty hole.</li><li>The peg that was jumped over is removed from the board.</li><li>Simply moving pegs without jumping is prohibited.</li>",
+                t_nuance: "Important nuance:",
+                t_nuance_text: "The original instructions do not prohibit turning during a series of jumps. This means that if desired, you can perform cascading moves, turning 90 degrees and removing multiple pegs in one move.",
+                t_cap6: "Original instructions (Leningrad, 1988)",
+                t_sec3: "Starting Position",
+                t_start_text: "The classic setup for this puzzle is a 'cross' with an empty central hole.",
+                t_cap7: "32 pegs, 1 empty space in the center",
+                t_sec4: "Mega-move of 16 Pegs (Experiment)",
+                t_mega_text1: "Since the rules do not prohibit changing direction during jumps, incredible cascading combinations can be created. In this experiment, one peg (marked with a white square) removed <strong>16 pegs in one continuous move</strong>, moving along the perimeter and entering the center.",
+                t_mega_text2: "To start the experiment, the corner pegs were removed to free up the path for turning (see the first frame of the gallery).",
+                t_prev: "Back",
+                t_next: "Next",
+                t_concl_strong: "Conclusion:",
+                t_concl: "This move clearly proves that the game is not as simple as it seems. The presence of cascading jumps with turns creates an astronomical number of combinations, but as seen in the last photo, <strong>a fast move does not guarantee that the last peg will remain in the center</strong>. This requires the deepest calculation.",
+                t_sec5: "About the Project",
+                t_about: "This site was created to preserve the history of Soviet board games. The game 'Tactics' is a vivid example of how simple peg mechanics turns into a complex logic puzzle that was ahead of its time.",
+                t_btn_gh: "Source code on GitHub"
+            }
+        };
+
+        function setLang(lang) {
+            const dict = translations[lang];
+            for (const id in dict) {
+                const el = document.getElementById(id);
+                if (el) {
+                    if (id === 't_how_list') {
+                        el.innerHTML = dict[id];
+                    } else {
+                        el.innerHTML = dict[id];
+                    }
+                }
+            }
+            // Меняем активную ссылку в переключателе
+            const langSwitch = document.querySelector('.lang-switch');
+            if (lang === 'en') {
+                langSwitch.innerHTML = `<a onclick="setLang('ru')">🇷🇺 Русский</a> | <span>🇬🇧 English</span>`;
+            } else {
+                langSwitch.innerHTML = `<span>🇷🇺 Русский</span> | <a onclick="setLang('en')">🇬🇧 English</a>`;
+            }
+        }
     </script>
 
 </body>
